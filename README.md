@@ -11,7 +11,7 @@ Demo: https://www.loom.com/share/fa555ad3f0d34bd99861a0755f192457
 - Lane Estimation: Uses KMeans clustering on vehicle positions to estimate the number of lanes on the road.
 - Visualization: Draws bounding boxes around vehicles, displays class labels with confidence scores, and illustrates estimated lanes and vehicle trajectories.
 
-## YOLOv8 Requirements
+## YOLOv8 and YOLOv5 Requirements
 
 - Python 3
 - OpenCV library (`cv2`)
