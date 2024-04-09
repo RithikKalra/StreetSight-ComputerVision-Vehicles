@@ -73,6 +73,7 @@ Press 'q' to quit the video window.
 - The script's parameters, such as the YOLO model weights and mask image, may need adjustment to match the specifics of the deployment environment.
 
 # U-Net Semantic Segmentation 
+![Picture10](https://github.com/Aaron-Moses/StreetSight-ComputerVision-Vehicles/assets/71098038/5715b88d-dcc4-43ef-838f-d5968b144046)
 ## FinalProjectUnet.ipynb Requirements
 - gtFine_trainvaltest.zip dataset
 - leftImg8bit_trainvaltest.zip dataset
