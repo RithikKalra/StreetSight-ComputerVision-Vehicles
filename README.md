@@ -1,4 +1,4 @@
-# Vehicle Detection and Lane Estimation
+# Vehicle Detection and Lane Estimation YOLOv8
 
 This Python script performs vehicle detection in a video stream and estimates the number of lanes on a road. It uses the Ultralytics YOLO model for object detection and the SORT algorithm for object tracking.
 
