@@ -71,3 +71,8 @@ Press 'q' to quit the video window.
 - The accuracy of vehicle detection and lane estimation can vary based on video quality, camera angle, and environmental conditions.
 - It's essential to have a proper mask image and adjust the limits for the counting line based on the specific traffic scene being analyzed.
 - The script's parameters, such as the YOLO model weights and mask image, may need adjustment to match the specifics of the deployment environment.
+
+##FinalProjectUnet.ipynb Requirements
+- gtFine_trainvaltest.zip dataset
+- leftImg8bit_trainvaltest.zip dataset
+- NVDIA GPU with CUDA toolkit
