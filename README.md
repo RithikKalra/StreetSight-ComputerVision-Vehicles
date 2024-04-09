@@ -25,7 +25,7 @@ pip install opencv-python-headless scikit-learn sort
 
 Note: You may need to adjust the installation command based on your environment.
 
-YOLO Model: The pre-trained YOLOv8 model can be downloaded from Ultralytics or trained on custom data. Place the weights file (e.g., yolov8n.pt) in the project directory.
+YOLO Model: The pre-trained YOLOv8 and YOLOv5 models can be downloaded from Ultralytics or trained on custom data. Place the weights file (e.g., yolov8n.pt) in the project directory.
 
 Video Source: The traffic video (e.g., cars.mp4) should be located in the ../Videos/ directory relative to the script.
 
