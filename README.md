@@ -2,6 +2,8 @@
 
 This Python script performs vehicle detection in a video stream and estimates the number of lanes on a road. It uses the Ultralytics YOLO model for object detection and the SORT algorithm for object tracking.
 
+Demo: https://www.loom.com/share/fa555ad3f0d34bd99861a0755f192457
+
 ## Features
 
 - Vehicle Detection: Identifies vehicles in each video frame using the YOLOv8 model.
