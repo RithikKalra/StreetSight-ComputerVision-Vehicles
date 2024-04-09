@@ -1,4 +1,4 @@
-# Vehicle Detection and Lane Estimation
+# Vehicle Detection and Lane Estimation 
 
 This Python script performs vehicle detection in a video stream and estimates the number of lanes on a road. It uses the Ultralytics YOLO model for object detection and the SORT algorithm for object tracking.
 
@@ -11,7 +11,7 @@ Demo: https://www.loom.com/share/fa555ad3f0d34bd99861a0755f192457
 - Lane Estimation: Uses KMeans clustering on vehicle positions to estimate the number of lanes on the road.
 - Visualization: Draws bounding boxes around vehicles, displays class labels with confidence scores, and illustrates estimated lanes and vehicle trajectories.
 
-## Requirements
+## YOLOv8 and YOLOv5 Requirements
 
 - Python 3
 - OpenCV library (`cv2`)
@@ -25,7 +25,7 @@ pip install opencv-python-headless scikit-learn sort
 
 Note: You may need to adjust the installation command based on your environment.
 
-YOLO Model: The pre-trained YOLOv8 model can be downloaded from Ultralytics or trained on custom data. Place the weights file (e.g., yolov8n.pt) in the project directory.
+YOLO Model: The pre-trained YOLOv8 and YOLOv5 models can be downloaded from Ultralytics or trained on custom data. Place the weights file (e.g., yolov8n.pt) in the project directory.
 
 Video Source: The traffic video (e.g., cars.mp4) should be located in the ../Videos/ directory relative to the script.
 
@@ -71,3 +71,10 @@ Press 'q' to quit the video window.
 - The accuracy of vehicle detection and lane estimation can vary based on video quality, camera angle, and environmental conditions.
 - It's essential to have a proper mask image and adjust the limits for the counting line based on the specific traffic scene being analyzed.
 - The script's parameters, such as the YOLO model weights and mask image, may need adjustment to match the specifics of the deployment environment.
+
+# U-Net Semantic Segmentation 
+![Picture10](https://github.com/Aaron-Moses/StreetSight-ComputerVision-Vehicles/assets/71098038/5715b88d-dcc4-43ef-838f-d5968b144046)
+## FinalProjectUnet.ipynb Requirements
+- gtFine_trainvaltest.zip dataset
+- leftImg8bit_trainvaltest.zip dataset
+- NVDIA GPU with CUDA toolkit
