@@ -5,17 +5,14 @@ import math
 from sort import *
 from sklearn.cluster import KMeans
 
-# Load the video
 cap = cv2.VideoCapture("../Videos/cars.mp4")
 
 if not cap.isOpened():
     print("Error opening video file")
     exit()
 
-# Load the YOLO model
 model = YOLO("../Yolo-Weights/yolov8n.pt")
 
-# Class names for detection
 classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
               "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",
               "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella",
@@ -27,7 +24,6 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
               "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors",
               "teddy bear", "hair drier", "toothbrush"]
 
-# Load the mask
 mask = cv2.imread("mask.png")
 if mask is None:
     print("Error loading mask image")
@@ -35,17 +31,14 @@ if mask is None:
 
 print("Video and mask loaded successfully")
 
-# Initialize the tracker
 tracker = Sort(max_age=20, min_hits=3, iou_threshold=0.3)
 
-# Define the counting line
 limits = [400, 297, 673, 297]
 totalCount = []  # List to store counted vehicles
 car_positions = []  # List to store the positions of cars crossing the line
 vehicle_widths = []  # List to store the widths of detected vehicles
 previous_centers = {}  # Dictionary to store the previous centers of tracked vehicles
 
-# Main loop
 while True:
     success, img = cap.read()
     if not success:
@@ -81,7 +74,7 @@ while True:
                 cv2.putText(img, f'{currentClass} {conf:.2f}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
                 currentArray = np.array([x1, y1, x2, y2, conf])
                 detections = np.vstack((detections, currentArray))
-                vehicle_widths.append(w)  # Add the width of the detected vehicle to the list
+                vehicle_widths.append(w)  
 
     # Update the tracker
     resultsTracker = tracker.update(detections)
@@ -117,7 +110,7 @@ while True:
         if vehicle_widths:
             estimated_lane_width = sum(vehicle_widths) / len(vehicle_widths)
         else:
-            estimated_lane_width = 50  # Default value if no vehicles have been detected yet
+            estimated_lane_width = 50 
 
         # Estimate the number of lanes
         estimated_num_lanes = max(1, position_range // estimated_lane_width)
@@ -126,7 +119,7 @@ while True:
         num_clusters = min(len(car_positions), int(estimated_num_lanes))
 
         # Use KMeans to cluster car positions with the estimated number of lanes
-        if num_clusters > 1:  # KMeans requires at least two samples for clustering
+        if num_clusters > 1: 
             kmeans = KMeans(n_clusters=num_clusters, random_state=0).fit(car_positions)
             num_lanes = len(set(kmeans.labels_))
 
@@ -135,14 +128,12 @@ while True:
                 lane_center = int(kmeans.cluster_centers_[i][0])
                 cv2.line(img, (lane_center, 0), (lane_center, img.shape[0]), (255, 0, 0), 2)
         else:
-            num_lanes = num_clusters  # If there's only one sample, there's only one lane
+            num_lanes = num_clusters 
 
         cv2.putText(img, f'Lanes: {num_lanes}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 
-    # Display the number of counted vehicles
     cv2.putText(img, f'Vehicles: {len(totalCount)}', (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 
-    # Show the image
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
