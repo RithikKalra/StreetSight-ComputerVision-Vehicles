@@ -65,7 +65,9 @@ Press 'q' to quit the video window.
 - The script displays the processed video frames in real-time, with bounding boxes around detected vehicles, trajectory lines, and the estimated number of lanes.
 - A count of detected vehicles is also displayed.
 
-
+**Metric**:
+- The metric is essentially calculated using the following formula B = N<sub>c</sub>*S / N<sub>l</sub> where B is busyness, N<sub>c</sub> is the number of cars,  N<sub>l</sub> is the number of lanes and S is a scaling factor.
+- It's important to include a scaling factor as the road can be depicted from various heights inflating N<sub>c</sub>. This value can be determined by measuring the dimensions of the bounded boxes indicating how big each car appears and thus how high the camera is relative to the street.
 
 ## Notes
 - The accuracy of vehicle detection and lane estimation can vary based on video quality, camera angle, and environmental conditions.
